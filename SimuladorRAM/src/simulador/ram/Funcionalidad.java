@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Funcionalidad {
 
     public Funcionalidad( ArrayList<Comando> Lista) {
+         System.out.println("hola mundo");
            ArrayList <ArrayList> Resultado = new ArrayList<ArrayList>();
            for(int z=0;z<Lista.size();z++){
             ArrayList <String> Temporal = new ArrayList <String>();

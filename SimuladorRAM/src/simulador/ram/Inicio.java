@@ -28,7 +28,7 @@ public class Inicio extends javax.swing.JFrame {
         nuevo.crearObjestos(resultado);
         ArrayList<Comando> arregloComandos = nuevo.getArregloComandos();
         for(int z=0;z<arregloComandos.size();z++){
-            System.out.println(arregloComandos.get(z).tipoComando);
+            System.out.println(arregloComandos.get(z).tipoComandoBinario);
             System.out.println(arregloComandos.get(z).operando1Binario);
             System.out.println(arregloComandos.get(z).operando2Binario);
         }

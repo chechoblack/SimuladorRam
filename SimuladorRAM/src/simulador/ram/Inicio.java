@@ -9,26 +9,23 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
  * @author ser
  */
 public class Inicio extends javax.swing.JFrame {
-    JFileChooser seleccionar=new JFileChooser();
-    File archivo;
-    FileInputStream entrada;
+    private JFileChooser seleccionar=new JFileChooser();
+    private File archivo;
+    private FileInputStream entrada;
+    private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos asm", "txt");
+    private archivo nuevo = new archivo();
     /**
      * Creates new form Inicio
      */
     public Inicio() {
         initComponents();
-        archivo nuevo = new archivo();
-        ArrayList<String> resultado = nuevo.leerTxt("C:\\Users\\ser\\Desktop\\prueba.txt");
-        nuevo.crearObjestos(resultado);
-        ArrayList<Comando> arregloComandos = nuevo.getArregloComandos();
-     
-        new Funcionalidad(arregloComandos);
     }
 
     /**
@@ -236,7 +233,21 @@ public class Inicio extends javax.swing.JFrame {
 
     private void btnCargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargaActionPerformed
         // TODO add your handling code here:
-        
+        JFileChooser filechooser = new JFileChooser();
+        filechooser.setFileFilter(filter);
+        int opcion=filechooser.showOpenDialog(this);
+        if(opcion == JFileChooser.APPROVE_OPTION){
+            //obtener ruta url del archivo
+            String urlArchivo = filechooser.getSelectedFile().getPath();
+            ArrayList<String> resultado = nuevo.leerTxt(urlArchivo);
+            nuevo.crearObjestos(resultado);
+            ArrayList<Comando> arregloComandos = nuevo.getArregloComandos();
+            for(int z=0;z<arregloComandos.size();z++){
+                System.out.println(arregloComandos.get(z).tipoComando);
+                System.out.println(arregloComandos.get(z).operando1Binario);
+                System.out.println(arregloComandos.get(z).operando2Binario);
+            }
+        }
     }//GEN-LAST:event_btnCargaActionPerformed
 
     /**

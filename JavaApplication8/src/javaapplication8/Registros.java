@@ -3,19 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication8;
+package simulador.ram;
 
 /**
  *
  * @author ser
  */
-public class JavaApplication8 {
+public class Registros {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public Registros() {
     }
     
 }

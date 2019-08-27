@@ -10,20 +10,20 @@ package simulador.ram;
  * @author ser
  */
 public class Comando {
-    String tipoComando,operando1,operando2;
+    String tipoComando,registro,operando2;
     String tipoComandoBinario,operando1Binario,operando2Binario;
     /**
      * 
      * @param tipocomando
      * @param tipoComandoBinario
-     * @param operando1
+     * @param registro
      * @param operando1Binario
      * @param operando2
      * @param operando2Binario 
      */
-    public Comando(String tipocomando, String tipoComandoBinario, String operando1, String operando1Binario,String operando2, String operando2Binario) {
+    public Comando(String tipocomando, String tipoComandoBinario, String registro, String operando1Binario,String operando2, String operando2Binario) {
         this.tipoComando=tipocomando;
-        this.operando1=operando1;
+        this.registro=registro;
         this.operando2=operando2;
         this.tipoComandoBinario=tipoComandoBinario;
         this.operando1Binario=operando1Binario;
@@ -48,14 +48,14 @@ public class Comando {
      * @return 
      */
     public String getOperando1() {
-        return operando1;
+        return registro;
     }
     /**
      * 
      * @param operando1 
      */
     public void setOperando1(String operando1) {
-        this.operando1 = operando1;
+        this.registro = operando1;
     }
     /**
      * 

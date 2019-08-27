@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class archivo {
     
     private ArrayList<Comando> arregloComandos = new ArrayList();
-    private String tipoComando="",operando1 = "",operando2 = "";
+    private String tipoComando="",registro = "",operando = "";
     ConvertirBinario Cambio = new ConvertirBinario();
     //lee el archivo de txt
     /**
@@ -54,17 +54,17 @@ public class archivo {
                 String [] palabras = palabra[1].split(",");// si contiene un registro y un numero los separa
                 tipoComando=palabra[x];
                 if(palabras.length==2){
-                    operando1=palabras[0];
-                    operando2=palabras[1];
+                    registro=palabras[0];
+                    operando=palabras[1];
                 }
                 else{
-                    operando1=palabras[0];
-                    operando2="0";
+                    registro=palabras[0];
+                    operando="0";
                 }
             }
             Comando lista=new Comando(tipoComando,Cambio.cambiarBinario(tipoComando),
-                    operando1,Cambio.cambiarBinario(operando1),
-                    operando2,Cambio.cambiarBinario(operando2));//crea el objeto comando que es la linea del txt en objeto
+                    registro,Cambio.cambiarBinario(registro),
+                    operando,Cambio.cambiarBinario(operando));//crea el objeto comando que es la linea del txt en objeto
             arregloComandos.add(lista);//almacenas los objetos en una arreglo
         }
     }

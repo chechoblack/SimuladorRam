@@ -242,7 +242,7 @@ public class Inicio extends javax.swing.JFrame {
             ArrayList<String> resultado = nuevo.leerTxt(urlArchivo);
             nuevo.crearObjestos(resultado);
             ArrayList<Comando> arregloComandos = nuevo.getArregloComandos();
-            
+          
         }
     }//GEN-LAST:event_btnCargaActionPerformed
 

@@ -16,9 +16,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author ser
  */
 public class Inicio extends javax.swing.JFrame {
-    private JFileChooser seleccionar=new JFileChooser();
-    private File archivo;
-    private FileInputStream entrada;
+     JFileChooser seleccionar=new JFileChooser();
+     File archivo;
+     FileInputStream entrada;
     private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos asm", "txt");
     private archivo nuevo = new archivo();
     /**

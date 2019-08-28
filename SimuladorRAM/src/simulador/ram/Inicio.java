@@ -10,22 +10,28 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author ser
  */
 public class Inicio extends javax.swing.JFrame {
-     JFileChooser seleccionar=new JFileChooser();
-     File archivo;
-     FileInputStream entrada;
+    JFileChooser seleccionar=new JFileChooser();
+    File archivo;
+    FileInputStream entrada;
     private FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos asm", "txt");
     private archivo nuevo = new archivo();
+    DefaultTableModel memory;
+    String [][] data={};
+    String titulos[] = {"Operador","Registro","Numero"};
     /**
      * Creates new form Inicio
      */
     public Inicio() {
         initComponents();
+        memory=new DefaultTableModel(data,titulos);
+        tlbMemory.setModel(memory);
     }
 
     /**
@@ -44,7 +50,7 @@ public class Inicio extends javax.swing.JFrame {
         lblAC = new javax.swing.JLabel();
         lblIR = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tlbMempry = new javax.swing.JTable();
+        tlbMemory = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         lblAX = new javax.swing.JLabel();
         lblBX = new javax.swing.JLabel();
@@ -69,19 +75,19 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel6.setText("CP Registers");
 
-        lblPC.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblPC.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblPC.setText("PC");
 
-        lblAC.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblAC.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblAC.setText("AC");
 
-        lblIR.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblIR.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblIR.setText("IR");
 
-        tlbMempry.setModel(new javax.swing.table.DefaultTableModel(
+        tlbMemory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -92,35 +98,42 @@ public class Inicio extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tlbMempry);
+        jScrollPane1.setViewportView(tlbMemory);
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel4.setText("Memory");
 
-        lblAX.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblAX.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblAX.setText("AX");
 
-        lblBX.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblBX.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblBX.setText("BX");
 
-        lblCX.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblCX.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblCX.setText("CX");
 
-        lblDX.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblDX.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblDX.setText("DX");
 
+        lblResultAx.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblResultAx.setText("0");
 
+        lblResultBx.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblResultBx.setText("0");
 
+        lblResultCx.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblResultCx.setText("0");
 
+        lblResultDx.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblResultDx.setText("0");
 
+        lblResultPc.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblResultPc.setText("00000000");
 
+        lblResultAc.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblResultAc.setText("00000000");
 
+        lblResultIr.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblResultIr.setText("00000000");
 
         btnSiguiente.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -137,10 +150,10 @@ public class Inicio extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(61, 61, 61)
-                                        .addComponent(jLabel4)))
+                                        .addComponent(jLabel4))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblResultPc)
@@ -184,12 +197,8 @@ public class Inicio extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUrl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCarga))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -203,10 +212,14 @@ public class Inicio extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblResultIr)
-                            .addComponent(lblIR))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblIR))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSiguiente))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblAX)
                             .addComponent(lblResultAx))
@@ -222,10 +235,7 @@ public class Inicio extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblDX)
                             .addComponent(lblResultDx))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSiguiente))))
+                        .addContainerGap())))
         );
 
         pack();
@@ -239,13 +249,21 @@ public class Inicio extends javax.swing.JFrame {
         if(opcion == JFileChooser.APPROVE_OPTION){
             //obtener ruta url del archivo
             String urlArchivo = filechooser.getSelectedFile().getPath();
-            ArrayList<String> resultado = nuevo.leerTxt(urlArchivo);
-            nuevo.crearObjestos(resultado);
-            ArrayList<Comando> arregloComandos = nuevo.getArregloComandos();
-          
+            cargarDatos(urlArchivo);
         }
     }//GEN-LAST:event_btnCargaActionPerformed
-
+    private void cargarDatos(String urlArchivo){
+        ArrayList<String> resultado = nuevo.leerTxt(urlArchivo);
+        nuevo.crearObjestos(resultado);
+        ArrayList<Comando> arregloComandos = nuevo.getArregloComandos();
+        for(int z=0;z<arregloComandos.size();z++){
+            String datos[]={arregloComandos.get(z).tipoComandoBinario,arregloComandos.get(z).operando1Binario,arregloComandos.get(z).operando2Binario};
+            memory.addRow(datos);
+            System.out.println(arregloComandos.get(z).tipoComandoBinario);
+            System.out.println(arregloComandos.get(z).operando1Binario);
+            System.out.println(arregloComandos.get(z).operando2Binario);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -301,7 +319,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel lblResultDx;
     private javax.swing.JLabel lblResultIr;
     private javax.swing.JLabel lblResultPc;
-    private javax.swing.JTable tlbMempry;
+    private javax.swing.JTable tlbMemory;
     private javax.swing.JTextField txtUrl;
     // End of variables declaration//GEN-END:variables
 }

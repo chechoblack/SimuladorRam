@@ -8,6 +8,7 @@ package simulador.ram;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *

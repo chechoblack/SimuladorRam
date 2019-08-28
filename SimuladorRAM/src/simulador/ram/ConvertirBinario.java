@@ -40,6 +40,11 @@ public class ConvertirBinario {
      * @return 
      */
     public String convertir(int numero){
+        int bandera = 0;
+        if(numero<0){
+            bandera=1;
+            numero=numero*-1;
+        }
         String binario = "";
         if (numero > 0) {
             while (numero > 0) {
@@ -55,17 +60,17 @@ public class ConvertirBinario {
         } else {
             binario = "-1";
         }
-        return completarBinario(binario);
+        return completarBinario(binario,bandera);
     }
     /**
      * 
      * @param Binario
      * @return 
      */
-    private String completarBinario(String Binario){
+    private String completarBinario(String Binario,int bandera){
         int contador=8-Binario.length();
-        String binarioCompleto="";
-        for(int i=0;i<contador;i++){
+        String binarioCompleto=String.valueOf(bandera);
+        for(int i=0;i<contador-1;i++){
             binarioCompleto+="0";
         }
         return binarioCompleto+Binario;

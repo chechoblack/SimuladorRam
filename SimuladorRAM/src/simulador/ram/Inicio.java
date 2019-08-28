@@ -259,9 +259,6 @@ public class Inicio extends javax.swing.JFrame {
         for(int z=0;z<arregloComandos.size();z++){
             String datos[]={arregloComandos.get(z).tipoComandoBinario,arregloComandos.get(z).operando1Binario,arregloComandos.get(z).operando2Binario};
             memory.addRow(datos);
-            System.out.println(arregloComandos.get(z).tipoComandoBinario);
-            System.out.println(arregloComandos.get(z).operando1Binario);
-            System.out.println(arregloComandos.get(z).operando2Binario);
         }
     }
     /**

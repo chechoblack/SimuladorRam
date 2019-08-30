@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,6 +26,7 @@ public class Inicio extends javax.swing.JFrame {
     DefaultTableModel memory;
     String [][] data={};
     String titulos[] = {"Operador","Registro","Numero"};
+    int Contador= 0;
     /**
      * Creates new form Inicio
      */
@@ -32,6 +34,7 @@ public class Inicio extends javax.swing.JFrame {
         initComponents();
         memory=new DefaultTableModel(data,titulos);
         tlbMemory.setModel(memory);
+        
     }
 
     /**
@@ -138,6 +141,11 @@ public class Inicio extends javax.swing.JFrame {
 
         btnSiguiente.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnSiguiente.setText("Siguiente");
+        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -252,6 +260,10 @@ public class Inicio extends javax.swing.JFrame {
             cargarDatos(urlArchivo);
         }
     }//GEN-LAST:event_btnCargaActionPerformed
+
+    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
+             
+    }//GEN-LAST:event_btnSiguienteActionPerformed
     private void cargarDatos(String urlArchivo){
         ArrayList<String> resultado = nuevo.leerTxt(urlArchivo);
         nuevo.crearObjestos(resultado);
@@ -260,6 +272,8 @@ public class Inicio extends javax.swing.JFrame {
             String datos[]={arregloComandos.get(z).tipoComandoBinario,arregloComandos.get(z).operando1Binario,arregloComandos.get(z).operando2Binario};
             memory.addRow(datos);
         }
+       ArrayList<ArrayList> Recorrer = new Funcionalidad(arregloComandos).Resultado;
+       lblResultPc = (JLabel) Recorrer.get(0).get(0);
     }
     /**
      * @param args the command line arguments

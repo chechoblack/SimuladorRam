@@ -8,17 +8,60 @@ import java.util.ArrayList;
  */
 public class Funcionalidad {
     
-   public ArrayList <ArrayList> Resultado ;
-   
-    public Funcionalidad( ArrayList<Comando> Lista) {
-           for(int z=0;z<Lista.size();z++){
-            ArrayList <String> Temporal = new ArrayList <String>();
-            Temporal.add(Lista.get(z).tipoComandoBinario);
-            Temporal.add(Lista.get(z).operando1Binario);
-            Temporal.add(Lista.get(z).operando2Binario);
-            Resultado.add(Temporal);
-        }
-           
+    int Posicion;//posicion en tabla
+    String Comando;//move,add,etc
+    String Registro;//ax,bx
+    String Operando;//numero
+    String Binario;//todos los datos en binario
+    
+    public Funcionalidad(int Posicion, String Comando,String Registro, String Operando,String Binario) {
+      this.Posicion=Posicion;
+      this.Comando=Comando;
+      this.Registro=Registro;
+      this.Operando=Operando;
+      this.Binario= Binario;
+      
     }
+
+    public String getBinario() {
+        return Binario;
+    }
+
+    public void setBinario(String Binario) {
+        this.Binario = Binario;
+    }
+
+    public int getPosicion() {
+        return Posicion;
+    }
+
+    public void setPosicion(int Posicion) {
+        this.Posicion = Posicion;
+    }
+
+    public String getComando() {
+        return Comando;
+    }
+
+    public void setComando(String Comando) {
+        this.Comando = Comando;
+    }
+
+    public String getRegistro() {
+        return Registro;
+    }
+
+    public void setRegistro(String Registro) {
+        this.Registro = Registro;
+    }
+
+    public String getOperando() {
+        return Operando;
+    }
+
+    public void setOperando(String Operando) {
+        this.Operando = Operando;
+    }
+    
     
 }

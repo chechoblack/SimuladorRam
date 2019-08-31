@@ -25,8 +25,15 @@ public class Inicio extends javax.swing.JFrame {
     private archivo nuevo = new archivo();
     DefaultTableModel memory;
     String [][] data={};
-    String titulos[] = {"Operador","Registro","Numero"};
+    String titulos[] = {"Posicion","Operador","Registro","Numero"};
     int Contador= 0;
+    int Resultado= 0;
+    int AC=0;
+    int AX=0;
+    int BX=0;
+    int CX= 0;
+    int DX=0;
+    ArrayList<Funcionalidad> ListaResultado = new ArrayList();
     /**
      * Creates new form Inicio
      */
@@ -34,6 +41,8 @@ public class Inicio extends javax.swing.JFrame {
         initComponents();
         memory=new DefaultTableModel(data,titulos);
         tlbMemory.setModel(memory);
+       
+      
         
     }
 
@@ -59,13 +68,13 @@ public class Inicio extends javax.swing.JFrame {
         lblBX = new javax.swing.JLabel();
         lblCX = new javax.swing.JLabel();
         lblDX = new javax.swing.JLabel();
-        lblResultAx = new javax.swing.JLabel();
-        lblResultBx = new javax.swing.JLabel();
-        lblResultCx = new javax.swing.JLabel();
-        lblResultDx = new javax.swing.JLabel();
-        lblResultPc = new javax.swing.JLabel();
-        lblResultAc = new javax.swing.JLabel();
-        lblResultIr = new javax.swing.JLabel();
+        AXlabel = new javax.swing.JLabel();
+        BXlabel = new javax.swing.JLabel();
+        CXlabel = new javax.swing.JLabel();
+        DXlabel = new javax.swing.JLabel();
+        PrimerJlabel = new javax.swing.JLabel();
+        Segundojlabel = new javax.swing.JLabel();
+        Tercerjlabel = new javax.swing.JLabel();
         btnSiguiente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -118,26 +127,26 @@ public class Inicio extends javax.swing.JFrame {
         lblDX.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblDX.setText("DX");
 
-        lblResultAx.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblResultAx.setText("0");
+        AXlabel.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        AXlabel.setText("0");
 
-        lblResultBx.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblResultBx.setText("0");
+        BXlabel.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        BXlabel.setText("0");
 
-        lblResultCx.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblResultCx.setText("0");
+        CXlabel.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        CXlabel.setText("0");
 
-        lblResultDx.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblResultDx.setText("0");
+        DXlabel.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        DXlabel.setText("0");
 
-        lblResultPc.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblResultPc.setText("00000000");
+        PrimerJlabel.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        PrimerJlabel.setText("00000000");
 
-        lblResultAc.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblResultAc.setText("00000000");
+        Segundojlabel.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        Segundojlabel.setText("00000000");
 
-        lblResultIr.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        lblResultIr.setText("00000000");
+        Tercerjlabel.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        Tercerjlabel.setText("00000000");
 
         btnSiguiente.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnSiguiente.setText("Siguiente");
@@ -156,28 +165,6 @@ public class Inicio extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(61, 61, 61)
-                                        .addComponent(jLabel4))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblResultPc)
-                                    .addComponent(jLabel6)
-                                    .addComponent(lblResultAc)
-                                    .addComponent(lblResultIr)))
-                            .addComponent(txtUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblAC, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblPC)
-                                .addComponent(lblIR))
-                            .addComponent(btnCarga)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblAX)
                             .addComponent(lblBX)
                             .addComponent(lblCX)
@@ -185,18 +172,41 @@ public class Inicio extends javax.swing.JFrame {
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblResultDx)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(DXlabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblResultCx)
-                                    .addComponent(lblResultBx)
-                                    .addComponent(lblResultAx))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 495, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                                    .addComponent(CXlabel)
+                                    .addComponent(BXlabel)
+                                    .addComponent(AXlabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 546, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(161, 161, 161)
+                                .addComponent(jLabel4)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(PrimerJlabel)
+                                .addComponent(Segundojlabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(Tercerjlabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel6))
+                        .addGap(16, 16, 16))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCarga)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPC)
+                    .addComponent(lblAC)
+                    .addComponent(lblIR)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
                         .addComponent(btnSiguiente)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(63, 63, 63))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,42 +218,44 @@ public class Inicio extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblResultPc)
-                            .addComponent(lblPC))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblResultAc)
-                            .addComponent(lblAC))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblResultIr)
-                            .addComponent(lblIR))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSiguiente))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblAX)
-                            .addComponent(lblResultAx))
+                            .addComponent(AXlabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblBX)
-                            .addComponent(lblResultBx))
+                            .addComponent(BXlabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblCX)
-                            .addComponent(lblResultCx))
+                            .addComponent(CXlabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblDX)
-                            .addComponent(lblResultDx))
-                        .addContainerGap())))
+                            .addComponent(DXlabel))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(PrimerJlabel)
+                            .addComponent(lblPC))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Segundojlabel)
+                            .addComponent(lblAC))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Tercerjlabel)
+                            .addComponent(lblIR))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSiguiente)
+                        .addGap(54, 54, 54))))
         );
 
         pack();
@@ -262,18 +274,254 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCargaActionPerformed
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-             
+        if(Contador==ListaResultado.size()){
+          return;
+          }
+        PrimerJlabel.setText(Integer.toString(ListaResultado.get(Contador).getPosicion()));
+        
+        if(ListaResultado.get(Contador).getComando().equals("LOAD")){
+          if(ListaResultado.get(Contador).getRegistro().equals("AX")){
+             AC=AX;
+             Segundojlabel.setText(Integer.toString(AC));
+          }
+          if(ListaResultado.get(Contador).getRegistro().equals("BX")){
+             AC=BX;
+             Segundojlabel.setText(Integer.toString(AC));
+          }
+          if(ListaResultado.get(Contador).getRegistro().equals("CX")){
+             AC=CX;
+             Segundojlabel.setText(Integer.toString(AC));
+          }
+          if(ListaResultado.get(Contador).getRegistro().equals("DX")){
+             AC=DX;
+             Segundojlabel.setText(Integer.toString(AC));
+          }
+      }
+      
+      if(ListaResultado.get(Contador).getComando().equals("ADD")){
+        
+          if(ListaResultado.get(Contador).getRegistro().equals("AX")){
+           AC=AC+AX;
+           Segundojlabel.setText(Integer.toString(AC));
+          }
+          if(ListaResultado.get(Contador).getRegistro().equals("BX")){
+          AC=AC+BX;
+          Segundojlabel.setText(Integer.toString(AC));
+          }
+          if(ListaResultado.get(Contador).getRegistro().equals("CX")){
+          AC=AC+CX;
+          Segundojlabel.setText(Integer.toString(AC));
+          }
+          if(ListaResultado.get(Contador).getRegistro().equals("DX")){
+          AC=AC+DX;
+          Segundojlabel.setText(Integer.toString(AC));
+          }
+      }
+      
+      if(ListaResultado.get(Contador).getComando().equals("SUB")){
+          if(ListaResultado.get(Contador).getRegistro().equals("AX")){
+           AC=AC-AX;
+           Segundojlabel.setText(Integer.toString(AC));
+          }
+          if(ListaResultado.get(Contador).getRegistro().equals("BX")){
+            AC=AC-BX;
+            Segundojlabel.setText(Integer.toString(AC));
+          }
+          if(ListaResultado.get(Contador).getRegistro().equals("CX")){
+            AC=AC-CX;
+            Segundojlabel.setText(Integer.toString(AC));
+          }
+          if(ListaResultado.get(Contador).getRegistro().equals("DX")){
+            AC=AC-DX;
+            Segundojlabel.setText(Integer.toString(AC));
+          }
+      }
+      
+      if(ListaResultado.get(Contador).getComando().equals("MOVE")){
+          if(ListaResultado.get(Contador).getRegistro().equals("AX")){
+           if(Integer.parseInt(ListaResultado.get(Contador).getOperando())>0){
+           AX=Integer.parseInt(ListaResultado.get(Contador).getOperando());
+           AXlabel.setText(Integer.toString(AX));
+           }
+          }
+          if(ListaResultado.get(Contador).getRegistro().equals("BX")){
+           if(Integer.parseInt(ListaResultado.get(Contador).getOperando())>0){
+           BX=Integer.parseInt(ListaResultado.get(Contador).getOperando());
+           BXlabel.setText(Integer.toString(BX));
+           }
+          }
+          if(ListaResultado.get(Contador).getRegistro().equals("CX")){
+           if(Integer.parseInt(ListaResultado.get(Contador).getOperando())>0){
+           CX=Integer.parseInt(ListaResultado.get(Contador).getOperando());
+           CXlabel.setText(Integer.toString(CX));
+           }
+          }
+          if(ListaResultado.get(Contador).getRegistro().equals("DX")){
+           if(Integer.parseInt(ListaResultado.get(Contador).getOperando())>0){
+           DX=Integer.parseInt(ListaResultado.get(Contador).getOperando());
+           DXlabel.setText(Integer.toString(DX));
+           }
+          }
+         
+         
+      }
+      
+      if(ListaResultado.get(Contador).getComando().equals("STORE")){
+          if(ListaResultado.get(Contador).getRegistro().equals("AX")){
+          AX=AC;
+          AXlabel.setText(Integer.toString(AX));
+          }
+          if(ListaResultado.get(Contador).getRegistro().equals("BX")){
+          BX=AC;
+          BXlabel.setText(Integer.toString(BX));
+          }
+          if(ListaResultado.get(Contador).getRegistro().equals("CX")){
+          CX=AC;
+          CXlabel.setText(Integer.toString(CX));
+          }
+          if(ListaResultado.get(Contador).getRegistro().equals("DX")){
+          DX=AC;
+          DXlabel.setText(Integer.toString(DX));
+          }
+      
+      }
+       Tercerjlabel.setText(ListaResultado.get(Contador).getBinario());
+       if(Contador<ListaResultado.size()){
+          Contador=Contador+1;
+          }
+       
+      
     }//GEN-LAST:event_btnSiguienteActionPerformed
     private void cargarDatos(String urlArchivo){
         ArrayList<String> resultado = nuevo.leerTxt(urlArchivo);
         nuevo.crearObjestos(resultado);
         ArrayList<Comando> arregloComandos = nuevo.getArregloComandos();
+        Contador= 0;
+        Resultado= 0;
+        AX=0;
+        BX=0;
+        CX= 0;
+        DX=0;
         for(int z=0;z<arregloComandos.size();z++){
-            String datos[]={arregloComandos.get(z).tipoComandoBinario,arregloComandos.get(z).operando1Binario,arregloComandos.get(z).operando2Binario};
+           Funcionalidad Objeto = new Funcionalidad(z,arregloComandos.get(z).tipoComando,arregloComandos.get(z).registro,
+                   arregloComandos.get(z).operando2,arregloComandos.get(z).tipoComandoBinario+arregloComandos.get(z).operando1Binario+arregloComandos.get(z).operando2Binario);
+            ListaResultado.add(Objeto);
+            
+            String datos[]={Integer.toString(z),arregloComandos.get(z).tipoComandoBinario,arregloComandos.get(z).operando1Binario,arregloComandos.get(z).operando2Binario};
             memory.addRow(datos);
         }
-       ArrayList<ArrayList> Recorrer = new Funcionalidad(arregloComandos).Resultado;
-       lblResultPc = (JLabel) Recorrer.get(0).get(0);
+        
+       PrimerJlabel.setText(Integer.toString(ListaResultado.get(0).getPosicion()));
+       Contador=1;
+       
+      if(ListaResultado.get(0).getComando().equals("LOAD")){
+          if(ListaResultado.get(0).getRegistro().equals("AX")){
+             AC=AX;
+             Segundojlabel.setText(Integer.toString(AC));
+          }
+          if(ListaResultado.get(0).getRegistro().equals("BX")){
+             AC=BX;
+             Segundojlabel.setText(Integer.toString(AC));
+          }
+          if(ListaResultado.get(0).getRegistro().equals("CX")){
+             AC=CX;
+             Segundojlabel.setText(Integer.toString(AC));
+          }
+          if(ListaResultado.get(0).getRegistro().equals("DX")){
+             AC=DX;
+             Segundojlabel.setText(Integer.toString(AC));
+          }
+      }
+      
+      if(ListaResultado.get(0).getComando().equals("ADD")){
+        
+          if(ListaResultado.get(0).getRegistro().equals("AX")){
+           AC=AC+AX;
+           Segundojlabel.setText(Integer.toString(AC));
+          }
+          if(ListaResultado.get(0).getRegistro().equals("BX")){
+          AC=AC+BX;
+          Segundojlabel.setText(Integer.toString(AC));
+          }
+          if(ListaResultado.get(0).getRegistro().equals("CX")){
+          AC=AC+CX;
+          Segundojlabel.setText(Integer.toString(AC));
+          }
+          if(ListaResultado.get(0).getRegistro().equals("DX")){
+          AC=AC+DX;
+          Segundojlabel.setText(Integer.toString(AC));
+          }
+      }
+      
+      if(ListaResultado.get(0).getComando().equals("SUB")){
+          if(ListaResultado.get(0).getRegistro().equals("AX")){
+           AC=AC-AX;
+           Segundojlabel.setText(Integer.toString(AC));
+          }
+          if(ListaResultado.get(0).getRegistro().equals("BX")){
+            AC=AC-BX;
+            Segundojlabel.setText(Integer.toString(AC));
+          }
+          if(ListaResultado.get(0).getRegistro().equals("CX")){
+            AC=AC-CX;
+            Segundojlabel.setText(Integer.toString(AC));
+          }
+          if(ListaResultado.get(0).getRegistro().equals("DX")){
+            AC=AC-DX;
+            Segundojlabel.setText(Integer.toString(AC));
+          }
+      }
+      
+      if(ListaResultado.get(0).getComando().equals("MOVE")){
+          if(ListaResultado.get(0).getRegistro().equals("AX")){
+           if(Integer.parseInt(ListaResultado.get(0).getOperando())>0){
+           AX=Integer.parseInt(ListaResultado.get(0).getOperando());
+           AXlabel.setText(Integer.toString(AX));
+           }
+          }
+          if(ListaResultado.get(0).getRegistro().equals("BX")){
+           if(Integer.parseInt(ListaResultado.get(0).getOperando())>0){
+           BX=Integer.parseInt(ListaResultado.get(0).getOperando());
+           BXlabel.setText(Integer.toString(BX));
+           }
+          }
+          if(ListaResultado.get(0).getRegistro().equals("CX")){
+           if(Integer.parseInt(ListaResultado.get(0).getOperando())>0){
+           CX=Integer.parseInt(ListaResultado.get(0).getOperando());
+           CXlabel.setText(Integer.toString(CX));
+           }
+          }
+          if(ListaResultado.get(0).getRegistro().equals("DX")){
+           if(Integer.parseInt(ListaResultado.get(0).getOperando())>0){
+           DX=Integer.parseInt(ListaResultado.get(0).getOperando());
+           DXlabel.setText(Integer.toString(DX));
+           }
+          }
+      
+      }
+      
+      if(ListaResultado.get(0).getComando().equals("STORE")){
+          if(ListaResultado.get(0).getRegistro().equals("AX")){
+          AX=AC;
+          AXlabel.setText(Integer.toString(AX));
+          }
+          if(ListaResultado.get(0).getRegistro().equals("BX")){
+          BX=AC;
+          BXlabel.setText(Integer.toString(BX));
+          }
+          if(ListaResultado.get(0).getRegistro().equals("CX")){
+          CX=AC;
+          CXlabel.setText(Integer.toString(CX));
+          }
+          if(ListaResultado.get(0).getRegistro().equals("DX")){
+          DX=AC;
+          DXlabel.setText(Integer.toString(DX));
+          }
+      
+      }
+       
+    Tercerjlabel.setText(ListaResultado.get(0).getBinario());
+    
     }
     /**
      * @param args the command line arguments
@@ -311,6 +559,13 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AXlabel;
+    private javax.swing.JLabel BXlabel;
+    private javax.swing.JLabel CXlabel;
+    private javax.swing.JLabel DXlabel;
+    private javax.swing.JLabel PrimerJlabel;
+    private javax.swing.JLabel Segundojlabel;
+    private javax.swing.JLabel Tercerjlabel;
     private javax.swing.JButton btnCarga;
     private javax.swing.JButton btnSiguiente;
     private javax.swing.JLabel jLabel4;
@@ -323,13 +578,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel lblDX;
     private javax.swing.JLabel lblIR;
     private javax.swing.JLabel lblPC;
-    private javax.swing.JLabel lblResultAc;
-    private javax.swing.JLabel lblResultAx;
-    private javax.swing.JLabel lblResultBx;
-    private javax.swing.JLabel lblResultCx;
-    private javax.swing.JLabel lblResultDx;
-    private javax.swing.JLabel lblResultIr;
-    private javax.swing.JLabel lblResultPc;
     private javax.swing.JTable tlbMemory;
     private javax.swing.JTextField txtUrl;
     // End of variables declaration//GEN-END:variables

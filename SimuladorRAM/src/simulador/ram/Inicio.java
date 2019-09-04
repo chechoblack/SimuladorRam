@@ -165,28 +165,11 @@ public class Inicio extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAX)
-                            .addComponent(lblBX)
-                            .addComponent(lblCX)
-                            .addComponent(lblDX))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(DXlabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(CXlabel)
-                                    .addComponent(BXlabel)
-                                    .addComponent(AXlabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 546, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(161, 161, 161)
                                 .addComponent(jLabel4)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(PrimerJlabel)
@@ -195,10 +178,28 @@ public class Inicio extends javax.swing.JFrame {
                             .addComponent(jLabel6))
                         .addGap(16, 16, 16))
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAX)
+                            .addComponent(lblBX)
+                            .addComponent(lblCX)
+                            .addComponent(lblDX))
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(BXlabel)
+                                    .addComponent(AXlabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(CXlabel)
+                                    .addComponent(DXlabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(txtUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCarga)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblPC)
                     .addComponent(lblAC)
@@ -242,13 +243,13 @@ public class Inicio extends javax.swing.JFrame {
                         .addGap(6, 6, 6)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(PrimerJlabel)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PrimerJlabel, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblPC))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Segundojlabel)
-                            .addComponent(lblAC))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblAC)
+                            .addComponent(Segundojlabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Tercerjlabel)
@@ -402,17 +403,21 @@ public class Inicio extends javax.swing.JFrame {
         BX=0;
         CX= 0;
         DX=0;
+        int NumeroRandom=(int) (Math.random() * ( 75 - 0 ));
         for(int z=0;z<arregloComandos.size();z++){
-           Funcionalidad Objeto = new Funcionalidad(z,arregloComandos.get(z).tipoComando,arregloComandos.get(z).registro,
+           Funcionalidad Objeto = new Funcionalidad(NumeroRandom,arregloComandos.get(z).tipoComando,arregloComandos.get(z).registro,
                    arregloComandos.get(z).operando2,arregloComandos.get(z).tipoComandoBinario+arregloComandos.get(z).operando1Binario+arregloComandos.get(z).operando2Binario);
             ListaResultado.add(Objeto);
             
-            String datos[]={Integer.toString(z),arregloComandos.get(z).tipoComandoBinario,arregloComandos.get(z).operando1Binario,arregloComandos.get(z).operando2Binario};
+            String datos[]={Integer.toString(NumeroRandom),arregloComandos.get(z).tipoComandoBinario,arregloComandos.get(z).operando1Binario,arregloComandos.get(z).operando2Binario};
             memory.addRow(datos);
+            NumeroRandom++;
         }
         
+      
+        
        PrimerJlabel.setText(Integer.toString(ListaResultado.get(0).getPosicion()));
-       Contador=1;
+       Contador=Contador+1;
        
       if(ListaResultado.get(0).getComando().equals("LOAD")){
           if(ListaResultado.get(0).getRegistro().equals("AX")){
@@ -497,7 +502,6 @@ public class Inicio extends javax.swing.JFrame {
            DXlabel.setText(Integer.toString(DX));
            }
           }
-      
       }
       
       if(ListaResultado.get(0).getComando().equals("STORE")){
@@ -521,7 +525,7 @@ public class Inicio extends javax.swing.JFrame {
       }
        
     Tercerjlabel.setText(ListaResultado.get(0).getBinario());
-    
+     //Contador=Contador+1;
     }
     /**
      * @param args the command line arguments
